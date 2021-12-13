@@ -28,8 +28,7 @@ type (
 )
 
 // Validate will check the Config to ensure its field values are valid
-func (cfg Config) Validate() error {
-	var err error
+func (cfg Config) Validate() (err error) {
 	if cfg.ApiKey == "" {
 		err = multierror.Append(err, errors.New("ApiKey is required"))
 	}
@@ -45,7 +44,7 @@ func (cfg Config) Validate() error {
 	if cfg.AccessTokenSecret == "" {
 		err = multierror.Append(err, errors.New("AccessTokenSecret is required"))
 	}
-	return err
+	return
 }
 
 // New creates a new instance of the tweeter.Client ready to send tweets
